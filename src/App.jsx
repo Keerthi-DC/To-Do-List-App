@@ -24,7 +24,7 @@ function App() {
       };
       setTodo([...todo,newTodo])
   }
-  function toggleComplte(id){
+  function toggleComplete(id){
       setTodo(todo.map(item=>item.id===id?{...item,completed:!item.completed}:item))
   }
   function deleteToDo(id){
@@ -40,7 +40,7 @@ function App() {
         <input value={input} onChange={(e)=>setInput(e.target.value)}placeholder='Add a task'/>
         <button type='submit'>Add</button>
       </form>
-      <ToDoList todo={todo} toggleComplte={toggleComplte} deleteToDo={deleteToDo} editTod={editTodo}/>
+      <ToDoList todo={todo} toggleComplete={toggleComplete} deleteToDo={deleteToDo} editTodo={editTodo}/>
     </div>
   )
 }
