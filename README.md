@@ -1,4 +1,4 @@
-* **GitHub Repository Link**: * **GitHub Repository Link**: https://github.com/Keerthi-DC/To-Do-List-App.git
+ * **GitHub Repository Link**: https://github.com/Keerthi-DC/To-Do-List-App.git
 
 # Premium Pastel Lilac To-Do List Application
 
