@@ -3,12 +3,12 @@ import Header from './components/Header';
 import ToDoList from './components/ToDoList';
 function App() {
   const [todo, setTodo] = useState([
-    { id: 1, text: "DO Internhala React Assignment - 1",completed:false },
-    { id: 2, text: "DO Internhala React Assignment - 2",completed:true  },
+    { id: 1, text: "Keeru D C submitted Internshala React Assignment - 1",completed:true },
+    { id: 2, text: "Marks allocated for Kerthi D C assignment 100/100",completed:false  },
   ])
 
   const [input,setInput]=useState("");
-  const handleAdd=(e)=>
+  const handleAdd=(e)=> 
     { 
       e.preventDefault();
       addTodo(input);
@@ -34,13 +34,15 @@ function App() {
       setTodo(todo.map(item => item.id === id ? { ...item, text: newtext } : item));
   }
   return (
-    <div>
-      <Header />
-      <form onSubmit={handleAdd}>
-        <input value={input} onChange={(e)=>setInput(e.target.value)}placeholder='Add a task'/>
-        <button type='submit'>Add</button>
-      </form>
-      <ToDoList todo={todo} toggleComplete={toggleComplete} deleteToDo={deleteToDo} editTodo={editTodo}/>
+    <div className="container">
+      <div className="todo-card">
+        <Header />
+        <form className="todo-form"onSubmit={handleAdd}>
+          <input className="todo-input" value={input} onChange={(e)=>setInput(e.target.value)}placeholder='Add a task to your to-do list'/>
+          <button className="todo-add-btn" type='submit'>Add</button>
+        </form>
+        <ToDoList todo={todo} toggleComplete={toggleComplete} deleteToDo={deleteToDo} editTodo={editTodo}/>
+      </div>
     </div>
   )
 }

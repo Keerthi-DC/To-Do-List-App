@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #f5f3ff 0%, #edd8fd 100%);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --border-color: rgba(167, 139, 250, 0.25);
+    --accent-color: #a78bfa;
+    /* Pastel Lilac */
+    --accent-hover: #8b5cf6;
+    /* Vibrant Lilac */
+    --text-main: #2e1065;
+    /* Deep purple-black for high contrast readability */
+    --text-muted: #7c7891;
+    --completed-color: #9ca3af;
+    --danger-color: #f472b6;
+    /* Pastel pink/rose */
+    --danger-hover: #ec4899;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-main);
+    padding: 20px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.1), 0 5px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+/* Form & Input Styling */
+.todo-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.todo-input {
+    flex: 1;
+    background: #fdfcff;
+    border: 1px solid rgba(167, 139, 250, 0.35);
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    color: var(--text-main);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.todo-input:focus {
+    border-color: var(--accent-hover);
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.15);
+}
+
+.todo-add-btn {
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 0 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s ease, filter 0.2s ease;
+}
+
+.todo-add-btn:hover {
+    filter: brightness(1.05);
+}
+
+.todo-add-btn:active {
+    transform: scale(0.95);
+}
+
+/* To-Do List Container */
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.todo-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+    background: rgba(167, 139, 250, 0.3);
+    border-radius: 10px;
+}
+
+/* To-Do Item Card */
+.todo-item {
+    background: rgba(245, 243, 255, 0.55);
+    border: 1px solid rgba(167, 139, 250, 0.15);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s ease;
+}
+
+.todo-item:hover {
+    background: rgba(245, 243, 255, 0.85);
+    border-color: rgba(139, 92, 246, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Custom Checkbox Styling */
+.todo-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid rgba(167, 139, 250, 0.5);
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    position: relative;
+    background: white;
+}
+
+.todo-checkbox:checked {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.todo-checkbox:checked::after {
+    content: "✓";
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.todo-checkbox:hover {
+    border-color: var(--accent-hover);
+}
+
+/* Text Element */
+.todo-text {
+    flex: 1;
+    font-size: 1.05rem;
+    color: var(--text-main);
+    transition: all 0.2s ease;
+    font-weight: 400;
+}
+
+/* Completed Task Style */
+.todo-item.completed {
+    opacity: 0.6;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--completed-color);
+}
+
+/* Buttons (Edit, Delete, Save) */
+button.todo-edit-btn,
+button.todo-delete-btn,
+button.todo-save-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button.todo-edit-btn {
+    background: rgba(167, 139, 250, 0.15);
+    color: var(--accent-hover);
+}
+
+button.todo-edit-btn:hover {
+    background: var(--accent-hover);
+    color: white;
+}
+
+button.todo-delete-btn {
+    background: rgba(244, 114, 182, 0.15);
+    color: #db2777;
+}
+
+button.todo-delete-btn:hover {
+    background: #db2777;
+    color: white;
+}
+
+/* Edit Mode Layout */
+.todo-edit-mode {
+    display: flex;
+    flex: 1;
+    gap: 8px;
+}
+
+.todo-edit-input {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 1rem;
+    color: var(--text-main);
+    outline: none;
+}
+
+button.todo-save-btn {
+    background: #10b981;
+    color: white;
+}
+
+button.todo-save-btn:hover {
+    background: #059669;
+}
