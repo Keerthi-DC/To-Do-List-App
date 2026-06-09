@@ -1,7 +1,7 @@
-function ToDoItem(){
+function ToDoItem({item}){
     return(
-        <div>
-            <p>ToDoItem Component</p>
+        <div className="to-do-item">
+            <span>{item.text}</span>
         </div>
     )
 }
